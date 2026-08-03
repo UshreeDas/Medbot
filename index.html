@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedBot</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- FONT AWESOME ICONS -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="sidebar">
+
+        <!-- TOGGLE -->
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- LOGO -->
+        <h2 class="logo">MEDBOT</h2>
+
+        <!-- NEW CHAT -->
+        <button class="primary-btn" onclick="newChat()">
+            <i class="fa-solid fa-plus"></i>
+            New Chat
+        </button>
+
+        <!-- AUTH BUTTONS -->
+        <div class="auth-buttons">
+
+            <button onclick="registerUser()">
+                <i class="fa-solid fa-user-plus"></i>
+                Register
+            </button>
+
+            <button onclick="login()">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                Login
+            </button>
+            <button onclick="logoutUser()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </button>
+        </div>
+
+        <!-- CHAT LIST -->
+        <div id="chatList" class="chat-list"></div>
+
+    </div>
+
+    <!-- CHAT AREA -->
+    <div class="chatbox">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+
+            <div class="top-left">
+                
+
+                <h2>MEDBOT</h2>
+            </div>
+
+        </div>
+
+        <!-- MESSAGES -->
+        <div id="messages" class="messages"></div>
+
+        <!-- INPUT -->
+        <!-- <div class="input-box">
+
+            <input
+                id="input"
+                type="text"
+                placeholder="Message MedBot..."
+                autocomplete="off"
+            />
+
+            <button onclick="sendMessage()">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+        </div> -->
+        <div class="input-box">
+
+    <div class="input-wrapper">
+
+        <input
+            id="input"
+            type="text"
+            placeholder="Message MedBot..."
+            autocomplete="off"
+        />
+
+    </div>
+         <!-- MICROPHONE -->
+    <!-- <button id="micBtn" onclick="startListening()">
+        <i class="fa-solid fa-microphone"></i>
+    </button> --> 
+    <div class="speech-box">
+
+    <select  id="langSelect" class="lang-select">
+        <option value="en-IN">EN</option>
+        <option value="hi-IN">हिं</option>
+        <option value="bn-IN">বাংলা</option>
+        <option value="ta-IN">தமிழ்</option>
+        <option value="te-IN">తెలుగు</option>
+        <option value="gu-IN">ગુજરાતી</option>
+        <option value="ur-PK">اردو</option>
+        <option value="as-IN">অসমীয়া</option>
+    </select>
+
+    <button id="micBtn" onclick="startListening()">
+        <i class="fa-solid fa-microphone"></i>
+    </button>
+
+</div>
+    <!--eta baje-->
+    <!-- <button id="micBtn">
+    <i class="fa-solid fa-microphone"></i>
+</button> --> 
+    <button onclick="sendMessage()">
+        <i class="fa-solid fa-paper-plane"></i>
+    </button>
+
+</div>
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script src="script.js"></script>
+
+</body>
+</html>

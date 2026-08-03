@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MedBot Chat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+    <h2>MEDBOT</h2>
+    <button onclick="toggleTheme()">🌙</button>
+</div>
+
+<div class="container">
+
+    <div class="sidebar" id="sidebar">
+        <button onclick="newChat()">+ New Chat</button>
+        <div id="chatList"></div>
+    </div>
+
+    <div class="chatbox">
+        <div id="messages"></div>
+
+        <div class="input-box">
+            <input id="input" placeholder="Type message..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

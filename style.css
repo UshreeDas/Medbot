@@ -1,0 +1,544 @@
+/* GLOBAL */
+body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #ffffff;
+    color: #222;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 260px;
+    background: #f5f5f7;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* COLLAPSED SIDEBAR */
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed .logo,
+.sidebar.collapsed .auth-buttons,
+.sidebar.collapsed .chat-list div span {
+    display: none;
+}
+
+/* TOGGLE BUTTON */
+.toggle-btn {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    color: #555;
+    align-self: flex-start;
+}
+
+.toggle-btn:hover {
+    color: #000;
+}
+
+/* LOGO */
+.logo {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #5b21b6;
+    letter-spacing: 1px;
+}
+
+/* NEW CHAT BUTTON */
+.primary-btn {
+    background: #8b5cf6;
+    border: none;
+    padding: 12px;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 12px;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.primary-btn:hover {
+    background: #7c3aed;
+    transform: scale(1.02);
+}
+
+/* AUTH BUTTONS */
+.auth-buttons button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    background: #c7e9ff;
+    color: #1e3a5f;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.auth-buttons button:hover {
+    background: #b4ddf7;
+    transform: scale(1.02);
+}
+
+/* CHAT LIST */
+.chat-list {
+    margin-top: 15px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.chat-list div {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 6px;
+    transition: 0.2s;
+    color: #333;
+    background: transparent;
+}
+
+.chat-list div:hover {
+    background: #e8e8ec;
+}
+
+/* CHATBOX */
+.chatbox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+/* TOP BAR */
+.topbar {
+    height: 60px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 15px;
+    background: white;
+}
+
+.topbar h2 {
+    margin: 0;
+    color: #5b21b6;
+}
+
+/* MESSAGES */
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    background: #ffffff;
+}
+
+/* MESSAGE BUBBLES */
+.user,
+.bot {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 14px;
+    margin-bottom: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    animation: fadeIn 0.2s ease;
+}
+
+/* USER */
+.user {
+    margin-left: auto;
+    background: #8b5cf6;
+    color: white;
+}
+
+/* BOT */
+.bot {
+    margin-right: auto;
+    background: #f1f1f3;
+    color: #222;
+}
+
+/* INPUT AREA */
+.input-box {
+    display: flex;
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.input-box input {
+    flex: 1;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    outline: none;
+    background: #fafafa;
+    color: #222;
+    font-size: 15px;
+}
+
+.input-box input:focus {
+    border: 1px solid #8b5cf6;
+}
+
+/* SEND BUTTON */
+.input-box button {
+    margin-left: 10px;
+    padding: 12px 18px;
+    border: none;
+    background: #8b5cf6;
+    color: white;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 16px;
+}
+
+.input-box button:hover {
+    background: #7c3aed;
+    transform: scale(1.03);
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d1d1d1;
+    border-radius: 10px;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        z-index: 10;
+        height: 100vh;
+        left: -280px;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+}
+
+
+
+
+
+/* =========================
+   TYPING DOTS
+========================= */
+
+/* TYPING ANIMATION */
+.typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 16px;
+    width: fit-content;
+    background: #f1f1f3;
+    border-radius: 14px;
+    margin-bottom: 14px;
+}
+
+.typing span {
+    width: 8px;
+    height: 8px;
+    background: #888;
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.typing span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0.7);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+/* =========================
+   GLOWING INPUT BOX
+========================= */
+
+/* =========================
+   CLEAN THIN GRADIENT BORDER
+========================= */
+
+.input-box {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background: white;
+    border-top: 1px solid #eee;
+    gap: 10px;
+}
+
+/* WRAPPER ONLY FOR INPUT */
+.input-wrapper {
+    flex: 1;
+
+    padding: 1.5px; /* THIN BORDER */
+
+    border-radius: 14px;
+
+    background: linear-gradient(
+        90deg,
+        #baa6e9,
+        #a955f7a6,
+        #fff172,
+        #9642c7
+    );
+
+    background-size: 300% 300%;
+
+    animation: borderGlow 5s linear infinite;
+}
+
+/* INPUT FIELD */
+.input-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+
+    padding: 14px;
+
+    border-radius: 13px;
+
+    background: #ffffff;
+
+    color: #222;
+
+    font-size: 15px;
+
+    box-sizing: border-box;
+}
+
+/* ANIMATION */
+@keyframes borderGlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+/* =========================
+   SEND BUTTON EFFECT
+========================= */
+
+.input-box button {
+    position: relative;
+    overflow: hidden;
+}
+
+.input-box button::after {
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: -100%;
+
+    background: rgba(255,255,255,0.2);
+
+    transition: 0.5s;
+}
+
+.input-box button:hover::after {
+    left: 100%;
+}
+
+/* =========================
+   SMOOTH MESSAGE APPEAR
+========================= */
+
+.user,
+.bot {
+    animation: messagePop 0.25s ease;
+}
+
+@keyframes messagePop {
+
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* CHAT ROW */
+.chat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    transition: 0.2s;
+}
+
+.chat-row:hover {
+    background: #ececf3;
+}
+
+/* CHAT NAME */
+.chat-name {
+    flex: 1;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ACTION BUTTONS */
+.chat-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* ICON BUTTONS */
+.chat-actions button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.chat-actions button:hover {
+    background: #ddd;
+    color: #000;
+}
+
+
+/* Microphone Button */
+.speech-box{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+/* tiny dropdown */
+
+#langSelect{
+
+    border:none;
+    background:white;
+    font-size:12px;
+    width:55px;
+    cursor:pointer;
+    color:#666;
+    outline:none;
+}
+.lang-select {
+    width: 55px;
+    height: 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: white;
+    color: #444;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+.lang-select:hover {
+    border-color: #8b5cf6;
+}
+#micBtn{
+    margin-left:10px;
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#f2f2f2;
+    color:#666;
+    cursor:pointer;
+    transition:.3s;
+}
+
+#micBtn:hover{
+    background:#8b5cf6;
+    color:white;
+}
+
+#micBtn.listening{
+    background:#ef4444;
+    color:white;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+box-shadow:0 0 0 0 rgba(239,68,68,.5);
+}
+
+70%{
+transform:scale(1.05);
+box-shadow:0 0 0 12px rgba(239,68,68,0);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+
+
