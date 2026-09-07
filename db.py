@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 )
 """)
 
-# CHATS (linked to user)
+# CHATS 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS chats (
     chat_id TEXT PRIMARY KEY,

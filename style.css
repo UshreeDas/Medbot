@@ -29,12 +29,39 @@ body {
     width: 70px;
 }
 
-.sidebar.collapsed .logo,
+/* .sidebar.collapsed .logo,
 .sidebar.collapsed .auth-buttons,
 .sidebar.collapsed .chat-list div span {
     display: none;
+} */
+ .sidebar.collapsed .logo {
+    display: none;
 }
 
+.sidebar.collapsed .auth-buttons {
+    display: none;
+}
+
+.sidebar.collapsed .chat-list {
+    display: none;
+}
+
+.sidebar.collapsed .cdac-logo {
+    display: flex;
+}
+/* C-DAC logo in collapsed sidebar */
+.sidebar.collapsed .cdac-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+}
+
+/* Smaller C-DAC logo when collapsed */
+.sidebar.collapsed .cdac-logo img {
+    width: 42px;
+    height: auto;
+}
 /* TOGGLE BUTTON */
 .toggle-btn {
     background: transparent;
@@ -51,13 +78,25 @@ body {
 }
 
 /* LOGO */
-.logo {
+/* .logo {
     text-align: center;
     margin-bottom: 15px;
     color: #5b21b6;
     letter-spacing: 1px;
+} */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0 15px 0;
 }
 
+.logo img {
+    width: 190px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 /* NEW CHAT BUTTON */
 .primary-btn {
     background: #8b5cf6;
@@ -115,7 +154,44 @@ body {
 .chat-list div:hover {
     background: #e8e8ec;
 }
+/* =========================
+   C-DAC LOGO
+========================= */
 
+.cdac-logo {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 8px 4px 4px 4px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    margin-top: auto;
+}
+
+.cdac-logo img {
+    width: 90px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================
+   COLLAPSED C-DAC LOGO
+========================= */
+
+.sidebar.collapsed .cdac-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 0;
+    margin-top: auto;
+}
+
+.sidebar.collapsed .cdac-logo img {
+    width: 45px;
+    height: auto;
+}
 /* CHATBOX */
 .chatbox {
     flex: 1;
@@ -251,7 +327,306 @@ body {
     }
 }
 
+/* =========================
+   SIDEBAR
+========================= */
 
+.sidebar {
+    width: 260px;
+    background: #f5f5f7;
+    border-right: 1px solid #ddd;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 12px;
+
+    transition: all 0.3s ease;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   COLLAPSED SIDEBAR
+========================= */
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+
+/* =========================
+   TOGGLE BUTTON
+========================= */
+
+.toggle-btn {
+    background: transparent;
+    border: none;
+
+    font-size: 20px;
+    cursor: pointer;
+
+    margin-bottom: 12px;
+
+    color: #555;
+
+    align-self: flex-start;
+}
+
+.toggle-btn:hover {
+    color: #000;
+}
+
+
+/* =========================
+   MEDBOT LOGO
+========================= */
+
+.logo {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 5px 0 15px 0;
+
+    width: 100%;
+}
+
+.logo img {
+    width: 140px;
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+}
+
+
+/* Hide MedBot logo when collapsed */
+
+.sidebar.collapsed .logo {
+    display: none;
+}
+
+
+/* =========================
+   NEW CHAT BUTTON
+========================= */
+
+.primary-btn {
+    background: #8b5cf6;
+
+    border: none;
+
+    padding: 10px;
+
+    color: white;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    margin-bottom: 12px;
+
+    font-weight: 600;
+
+    transition: 0.2s;
+
+    width: 100%;
+}
+
+.primary-btn:hover {
+    background: #7c3aed;
+
+    transform: scale(1.02);
+}
+
+
+/* =========================
+   COLLAPSED NEW CHAT
+========================= */
+
+.sidebar.collapsed .primary-btn {
+    width: 46px;
+
+    height: 46px;
+
+    padding: 0;
+
+    margin: 0 auto 12px auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0;
+}
+
+
+/* Show only + icon */
+
+.sidebar.collapsed .primary-btn i {
+    font-size: 18px;
+
+    margin: 0;
+}
+
+
+/* =========================
+   AUTH BUTTONS
+========================= */
+
+.auth-buttons {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 6px;
+
+    width: 100%;
+}
+
+
+/* Auth buttons */
+
+.auth-buttons button {
+    width: 100%;
+
+    padding: 9px 5px;
+
+    background: #c7e9ff;
+
+    color: #1e3a5f;
+
+    border: none;
+
+    border-radius: 9px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+.auth-buttons button:hover {
+    background: #b4ddf7;
+
+    transform: scale(1.02);
+}
+
+
+/* Logout goes across both columns */
+
+.auth-buttons button:last-child {
+    grid-column: span 2;
+}
+
+
+/* Hide auth buttons when collapsed */
+
+.sidebar.collapsed .auth-buttons {
+    display: none !important;
+}
+
+
+/* =========================
+   CHAT LIST
+========================= */
+
+.chat-list {
+    margin-top: 12px;
+
+    overflow-y: auto;
+
+    flex: 1;
+
+    min-height: 0;
+
+    width: 100%;
+}
+
+
+/* =========================
+   CHAT ROW
+========================= */
+
+.chat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 3px 8px;
+    border-radius: 9px;
+    margin-bottom: 2px;
+    transition: 0.2s;
+    overflow: hidden;
+    min-height: 28px;
+    line-height: 1.1;
+}
+
+.chat-row:hover {
+    background: #ececf3;
+}
+
+
+/* =========================
+   CHAT NAME
+========================= */
+
+.chat-name {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    line-height: 1.2;
+    padding-right: 5px;
+}
+
+
+/* =========================
+   CHAT ACTIONS
+========================= */
+
+.chat-actions {
+    display: flex;
+    gap: 3px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+
+/* =========================
+   CHAT ACTION BUTTONS
+========================= */
+
+.chat-actions button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #666;
+    font-size: 12px;
+    padding: 3px 4px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.chat-actions button:hover {
+    background: #ddd;
+
+    color: #000;
+}
 
 
 
@@ -539,6 +914,66 @@ transform:scale(1);
 }
 
 }
+/* =========================
+   SOURCE BUTTON
+========================= */
 
+.source-container {
+    margin-top: 12px;
+}
 
+.source-button {
+    border: 1px solid #ddd;
+    background: white;
+    color: #5b21b6;
+    padding: 8px 12px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 0.2s;
+}
 
+.source-button:hover {
+    background: #f3efff;
+    border-color: #8b5cf6;
+}
+
+/* =========================
+   SOURCE IMAGES
+========================= */
+
+.source-images {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.source-image {
+    max-width: 100%;
+    width: 500px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   C-DAC LOGO
+========================= */
+
+.cdac-logo {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 5px 5px 5px;
+    box-sizing: border-box;
+    margin-top: auto;
+}
+
+/* C-DAC image */
+.cdac-logo img {
+    width: 70px;
+    height: auto;
+    object-fit: contain;
+}
